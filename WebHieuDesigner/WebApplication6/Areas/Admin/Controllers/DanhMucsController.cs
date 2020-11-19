@@ -46,9 +46,23 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] DanhMuc danhMuc)
+    
+        public ActionResult Create([Bind(Include = "Id,Name,Content")] DanhMuc danhMuc, HttpPostedFileBase picture)
         {
+            string pictures = "";
+
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                // lấy ra từng file
+                picture = Request.Files[i];
+                // lấy tên file
+                string fileName = picture.FileName;
+                // lưu file
+                picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
+                pictures += "/Content/FileUpload/" + fileName + ";";
+            }
+            //add nội dung
+            danhMuc.Img = pictures;
             if (ModelState.IsValid)
             {
                 db.DanhMucs.InsertOnSubmit(danhMuc);
@@ -78,18 +92,41 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] DanhMuc danhMuc)
+        public ActionResult Edit([Bind(Include = "Id,Name,Content")] DanhMuc danhMuc, HttpPostedFileBase picture)
         {
+            DanhMuc danhMucs = db.DanhMucs.First(x => x.Id == danhMuc.Id);
+            string pictures = "";
+            if (picture != null)
+            {
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    // lấy ra từng file
+                    picture = Request.Files[i];
+                    // lấy tên file
+                    string fileName = picture.FileName;
+                    // lưu file
+                    picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
+                    pictures += "/Content/FileUpload/" + fileName + ";";
+
+                }
+
+            }
+            else
+            {
+                pictures = danhMucs.Img;
+            }
             if (ModelState.IsValid)
             {
-                DanhMuc danhMucs = db.DanhMucs.First(x => x.Id == danhMuc.Id);
                 if (danhMucs == null)
                 {
                     return HttpNotFound();
                 }
                 danhMucs.Name = danhMuc.Name;
-          
+                danhMucs.Img = pictures;
+                danhMucs.Content = danhMuc.Content;
+
+
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

@@ -18,7 +18,9 @@ namespace WebApplication6.Areas.Admin.Controllers
         // GET: Admin/Baners
         public ActionResult Index()
         {
+    
             return View(db.Baners.ToList());
+            
         }
 
         // GET: Admin/Baners/Details/5
