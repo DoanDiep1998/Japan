@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HieuDesigner" Class="DBContextsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-AJ7R3H3\SQLEXPRESS;Initial Catalog=HieuDesigner;User ID=sa" SettingsObjectName="Models.Properties.Settings" SettingsPropertyName="HieuDesignerConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Baner" Member="Baners">
-    <Type Name="Baner">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="location" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Images" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+  <Table Name="dbo.Admins" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Item" Member="Items">
@@ -18,6 +17,14 @@
       <Column Name="ID_DanhMucCon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Item_BaoGia" Member="BaoGias" ThisKey="Id" OtherKey="itemID" Type="BaoGia" />
       <Association Name="DanhMucCon_Item" Member="DanhMucCon" ThisKey="ID_DanhMucCon" OtherKey="Id" Type="DanhMucCon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Baner" Member="Baners">
+    <Type Name="Baner">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Images" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.BaoGia" Member="BaoGias">

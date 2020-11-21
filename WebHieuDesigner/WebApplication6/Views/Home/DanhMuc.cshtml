@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "DanhMuc";
+
+}
+@model WebApplication6.Models.DetailDatas
+<div class="container contents">
+    <div class="title-items container row"><h4 style="font-size: 24px; color: #000000 !important;">Thiết kế đồ họa</h4> </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <nav class="navbar navbar-expand-md navbar-light bg-white">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav2">
+                    <ul class="navbar-nav mr-auto ">
+                    </ul>
+                    <ul class="navbar-nav  list_sub_category">
+                        @foreach (var item in Model.lstSubCategory)
+                        {
+                            <li class="row">
+                                <a href="" class=" active">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-9">
+            <div class="items row">
+                @foreach (var item in Model.lstSubCategory)
+                {
+                    foreach (var ite in item.lstItems)
+                    {
+                        var data = ite.Images.Split(';').Take(1);
+                       
+                <div class="col-md-4">
+                    @foreach (var img in data)
+                    {
+                        if (img == "")
+                        {
+                            break;
+                        }
+                        <img class="img-item" src="@img" alt="">
+                    }
+
+                    <div class="title-item">
+                        <a href="@Url.Action("ChiTiet",new {Id=@item.Id })">
+                            <b>@ite.Tile </b><br>
+                     <span>@(String.Format("{0:dd/MM/yyyy}", ite.CreateDate ?? DateTime.Now))</span>
+                        </a>
+                    </div>
+                </div>
+                    }
+
+                 }
+                        </div>
+                    </div>
+    </div>
+</div>
+

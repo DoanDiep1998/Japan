@@ -40,7 +40,6 @@ namespace WebApplication6.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.danhmucID = new SelectList(db.DanhMucs, "Id", "Name");
-         
             return View();
         }
 

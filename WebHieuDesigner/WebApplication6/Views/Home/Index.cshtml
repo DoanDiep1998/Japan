@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
 }
+@model IEnumerable<WebApplication6.Models.DetailDatas>
+
 
 <style>
 
@@ -30,17 +33,17 @@
                 @foreach (var item in ViewBag.lstBanner1)
                 {
                     var data = item.Images.Split(';');
-                <div class="carousel-item ">
-                    @foreach (var ite in data)
-                    {
-                        if (ite == "")
+                    <div class="carousel-item ">
+                        @foreach (var ite in data)
                         {
-                            break;
+                            if (ite == "")
+                            {
+                                break;
+                            }
+                            <img src="@ite" alt="@item.name">
                         }
-                        <img src="@ite" alt="@item.name">
-                    }
 
-                </div>
+                    </div>
                 }
             </div>
         </div>
@@ -48,133 +51,73 @@
 </div>
 <div class="container sub-menu">
     <div class="row">
+        @foreach (var item in ViewBag.lstDanhMuc)
+        {
+            var data = item.Img.Split(';');
+            <div class="col-12 col-sm-12 col-md-4">
+                <a href="@Url.Action("DanhMuc", new{Id =item.Id})">
 
-        <div class="col-12 col-sm-12 col-md-4">
-            <a href="">
-                <div class="row ml-0 ">
-                    <img src="~/Content/Img/s_menu_ps.png" alt="">
-                    <div class="text_sub_menu ">
-                        <span class="b-sub-menu b-blue">Thiết kế đồ họa</span><br>
-                        <span class="text-16-normal">Logo, thương hiệu, truyền thông</span>
+                    <div class="row ml-0 ">
+
+                        @foreach (var ite in data)
+                        {
+                            if (ite == "")
+                            {
+                                break;
+                            }
+                            <img src="@ite" width="64px" height="65px" alt="">
+                        }
+                        <div class="text_sub_menu ">
+                            <span class="b-sub-menu b-blue">@item.Name</span><br>
+                            <span class="text-16-normal">@item.Content</span>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-sm-12 col-md-4">
-            <a href="">
-                <div class="row">
-                    <img src="~/Content/Img/s_menu_ps2.png" />
-                    
-                    <div class="text_sub_menu">
-                        <span class="b-sub-menu b-green">Thiết kế đồ họa</span><br>
-                        <span class="text-16-normal"> Logo, thương hiệu, truyền thông</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-sm-12 col-md-4">
-            <a href="">
-                <div class="row">
-                    <img src="~/Content/Img/s_menu_ps3.png" alt="">
-                    <div class="text_sub_menu">
-                        <span class="b-sub-menu b-orange">Thiết kế đồ họa</span><br>
-                        <span class="text-16-normal">Logo, thương hiệu, truyền thông</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="container contents">
-    <div class="title-items container row">
-        <h4>Thiết kế đồ họa</h4>
-        <button class="view-all">Xem tất cả</button>
-    </div>
-    <div class="items row">
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
-
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
-
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
-
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-            <div class="title-item">
-                <a href="">
-                    <b>Thiết kế logo Maxmed </b><br>
-                    <span>20/11/2020</span>
                 </a>
             </div>
-        </div>
+        }
     </div>
 </div>
-<div class="container contents">
-    <div class="title-items container row">
-        <h4>Thiết kế đồ họa</h4>
-        <button class="view-all">Xem tất cả</button>
-    </div>
-    <div class="items row">
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
 
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
+@foreach (var items in Model)
+{
+    <div class="container contents">
+        <div class="title-items container row">
+            <h4>@items.Name</h4>
+            <button class="view-all"><a href="@Url.Action("DanhMuc", new{Id =items.Id})">Xem tất cả</a></button>
         </div>
+        <div class="items row">
 
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
+            @foreach (var item in items.lstSubCategory)
+            {
+                foreach (var ite in item.lstItems)
+                {
+                    var data = ite.Images.Split(';').Take(1);
+            <div class="col-md-3">
+                @foreach (var img in data)
+                {
+                    if (img == "")
+                    {
+                        break;
+                    }
+                    <img class="img-item" src="@img" alt="">
+                }
 
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-            <div class="title-item">
-                <a href="">
-                    <b>Thiết kế logo Maxmed  </b><br>
-                    <span>20/11/2020</span>
-                </a>
+                <div class="title-item">
+                    <a href="@Url.Action("ChiTiet",new {Id=ite.Id })">
+                        <b>@ite.Tile </b><br>
+                        <span>@(String.Format("{0:dd/MM/yyyy}", ite.CreateDate ?? DateTime.Now))</span>
+                    </a>
+                </div>
             </div>
+                }
+
+            }
+
+
         </div>
     </div>
+}
 
-</div>
-<div class="container contents">
-    <div class="title-items container row">
-        <h4>Thiết kế đồ họa</h4>
-        <button class="view-all">Xem tất cả</button>
-    </div>
-    <div class="items row">
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
-
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
-
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-        </div>
-
-        <div class="col-md-3">
-            <img class="img-item" src="https://cdn.tgdd.vn/Files/2019/01/01/1142002/s8ori_800x600.jpg" alt="">
-            <div class="title-item">
-                <a href="">
-                    <b>Thiết kế logo Maxmed </b><br>
-                    <span>20/11/2020</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-</div>
 <style>
 
     .items2 {
@@ -208,25 +151,25 @@
 </style>
 <div class="container contents">
     <div class="title-items container row">
-        <h4>Thiết kế đồ họa</h4>
+        <h4>Các khách hàng từng phục vụ</h4>
 
     </div>
     <div class="items2 container ">
         @foreach (var item in ViewBag.lstBanner1)
         {
             var data = item.Images.Split(';');
-        <div>
-            @foreach (var ite in data)
-            {
-                if (ite == "")
+            <div>
+                @foreach (var ite in data)
                 {
-                    break;
+                    if (ite == "")
+                    {
+                        break;
+                    }
+                    <img src="@ite">
                 }
-                <img src="@ite">
-            }
-        </div>
+            </div>
 
-                }
+        }
     </div>
 
 </div>
@@ -244,7 +187,7 @@
         // banner 1
         $($('.carousel-inner').children('div')[0]).addClass('active');
         $($('.carousel-indicators').children('li')[0]).addClass('active');
-     
+
     });
- 
+
 </script>

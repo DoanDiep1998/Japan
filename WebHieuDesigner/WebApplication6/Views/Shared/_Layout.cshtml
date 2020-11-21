@@ -22,7 +22,7 @@
     <div class="container menu-header ">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
 
-            <h1 class="navbar-brand logo">hieuthietke.com</h1>
+            <a href="@Url.Action("Index","Home")"><h1 class="navbar-brand logo">hieuthietke.com </h1></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,15 +30,12 @@
                 <ul class="navbar-nav mr-auto">
                 </ul>
                 <ul class="navbar-nav  right-content">
-                    <li class="nav-item col">
-                        <a href="">Thiết kế đồ họa</a>
-                    </li>
-                    <li class="nav-item col">
-                        <a href="">Thiết kế Landingpage</a>
-                    </li>
-                    <li class="nav-item col">
-                        <a href="">Khóa học đồ họa</a>
-                    </li>
+                    @foreach (var item in ViewBag.lstDanhMuc)
+                    {
+                        <li class="nav-item col">
+                            <a href="@item.Id">@item.Name</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>
@@ -51,6 +48,10 @@
     <footer class="footer-page">
 
         <div class="container content-footer ">
+
+            <div>
+                @Html.Action("GetContact", "Home",new{Id=ViewBag.paramContact})
+            </div>
             <div class="row">
                 <img src="~/Content/Img/bg_hieu_nguyen.png" class=" col-md-3 col-12" alt="">
                 <div class="content-footer-text  col-md-9 col-12">

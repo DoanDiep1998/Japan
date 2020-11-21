@@ -133,10 +133,12 @@
     <Compile Include="Areas\Admin\Controllers\DanhMucConsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DetailDatas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,13 +149,16 @@
     <Content Include="Content\Css\style.css" />
     <Content Include="Content\Img\banner.png" />
     <Content Include="Content\Img\bg_hieu_nguyen.png" />
+    <Content Include="Content\Img\icon-black.png" />
     <Content Include="Content\Img\icon_fb.png" />
     <Content Include="Content\Img\icon_glb.png" />
     <Content Include="Content\Img\icon_mail.png" />
     <Content Include="Content\Img\icon_phone.png" />
+    <Content Include="Content\Img\mess-icon.png" />
     <Content Include="Content\Img\s_menu_ps.png" />
     <Content Include="Content\Img\s_menu_ps2.png" />
     <Content Include="Content\Img\s_menu_ps3.png" />
+    <Content Include="Content\Img\zalo-icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -186,6 +191,7 @@
     <Content Include="Areas\Admin\Views\Items\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Items\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Items\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <None Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -210,16 +216,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\DanhMuc.cshtml" />
+    <Content Include="Views\Home\ChiTiet.cshtml" />
+    <Content Include="Views\Home\GetContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Acset\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\FileUpload\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
