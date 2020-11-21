@@ -4,9 +4,7 @@ USE HieuDesigner
 go
 create Table DanhMuc(
  Id int Primary key identity,
- Name NvarChar(500),
- Content NvarChar(500),
- Img NvarChar(500)
+ Name NvarChar(500)
 )
 create Table DanhMucCon(
  Id int Primary key identity,
@@ -28,7 +26,8 @@ create Table Item(
 Create table Baner (
 id int Primary key identity,
 name NvarChar(500),
-Images Nvarchar(max)
+Images Nvarchar(max),
+location int
 )
 create Table BaoGia(
  Id int Primary key identity,
@@ -39,3 +38,9 @@ create Table BaoGia(
  itemID Int,
   FOREIGN KEY (itemID) REFERENCES Item(Id)
 ) 
+create Table Admins(
+ Id int Primary key identity,
+ UserName NvarChar(30),
+ Pass NvarChar(30),
+) 
+insert into Admins  values(N'HieuNguyenAdmin',N'Admin@&a_195')
