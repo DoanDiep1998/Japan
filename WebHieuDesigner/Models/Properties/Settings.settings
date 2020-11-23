@@ -18,5 +18,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-AJ7R3H3\SQLEXPRESS;Initial Catalog=HieuDesigner;User ID=sa;Password=1234$</Value>
     </Setting>
+    <Setting Name="HieuDesignerConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-3DB67SK\SQLEXPRESS;Initial Catalog=HieuDesigner;User ID=sa;Password=1234$&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=DESKTOP-3DB67SK\SQLEXPRESS;Initial Catalog=HieuDesigner;User ID=sa;Password=1234$</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

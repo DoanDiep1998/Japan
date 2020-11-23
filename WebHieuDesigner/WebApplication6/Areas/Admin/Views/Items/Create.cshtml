@@ -1,4 +1,4 @@
-﻿@model Models.Item
+﻿@model Item
 
 @{
     ViewBag.Title = "Create";
@@ -88,6 +88,8 @@
                         data.append('CreateDate', $('#CreateDate').val());
                         data.append('ID_DanhMucCon', $('#ID_DanhMucCon').val());
                         Post_Data("/Admin/Items/Create", data);
+                        console.log($('#CreateDate').val());
+                        console.log($('#ID_DanhMucCon').val());
 
                     } else {
                         alert('trình duyệt không hỗ trợ upfile, vui lòng chọn trình duyệt khác!!');

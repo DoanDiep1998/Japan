@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Models
+namespace WebApplication6
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -51,7 +51,7 @@ namespace Models
     #endregion
 		
 		public DBContextsDataContext() : 
-				base(global::Models.Properties.Settings.Default.HieuDesignerConnectionString2, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HieuDesignerConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

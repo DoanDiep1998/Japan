@@ -22,3 +22,14 @@ C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\Models\obj\Debug\Mod
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\Models\obj\Debug\Models.csproj.CopyComplete
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\Models\obj\Debug\Models.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\Models\obj\Debug\Models.pdb
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\Models.dll.config
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\Models.dll
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\Models.pdb
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\EntityFramework.dll
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\EntityFramework.xml
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\obj\Debug\Models.dll
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\Models\obj\Debug\Models.pdb

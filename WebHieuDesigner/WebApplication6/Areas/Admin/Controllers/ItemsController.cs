@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Models;
+
 
 
 namespace WebApplication6.Areas.Admin.Controllers
@@ -47,7 +47,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,Tile,Contents,CreateDate,Images,ID_DanhMucCon")] Item item, HttpPostedFileBase picture)
+        public ActionResult Create( Item item, HttpPostedFileBase picture)
         {
             string pictures = "";
             
@@ -97,7 +97,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Tile,Contents,CreateDate,Images,ID_DanhMucCon")] Item item, HttpPostedFileBase picture)
+        public ActionResult Edit( Item item, HttpPostedFileBase picture)
         {
             string pictures = "";
             if (picture !=null)

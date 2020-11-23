@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Models;
 
 
 namespace WebApplication6.Areas.Admin.Controllers
@@ -48,7 +47,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,ID_DanhMucCha")] DanhMucCon danhMucCon)
+        public ActionResult Create( DanhMucCon danhMucCon)
         {
             if (ModelState.IsValid)
             {

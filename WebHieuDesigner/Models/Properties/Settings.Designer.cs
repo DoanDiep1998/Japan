@@ -44,5 +44,16 @@ namespace Models.Properties {
                 return ((string)(this["HieuDesignerConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-3DB67SK\\SQLEXPRESS;Initial Catalog=HieuDesigner;User ID=sa;Pa" +
+            "ssword=1234$")]
+        public string HieuDesignerConnectionString2 {
+            get {
+                return ((string)(this["HieuDesignerConnectionString2"]));
+            }
+        }
     }
 }
