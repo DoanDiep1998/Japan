@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Chi Tiết";
+}
+@model Item
+
+<style>
+    .img-chi-tiet {
+        width: inherit;
+        margin-bottom: 10px;
+    }
+
+    .p-content {
+        text-align: justify;
+    }
+</style>
+<div class="container contents">
+    <div class="title-items container row">
+
+        <div class="row">
+            <div class="col-md-1"><a href="@Url.Action("Index","Home")"><img src="~/Content/Img/icon-black.png" width="30px" height="30px" /></a> </div>
+            <div class="col-md-11">
+                <h4 style="font-size: 24px; color: #000000 !important;    padding: 0px;">Thiết kế đồ họa</h4>
+                <span> @(String.Format("{0:dd/MM/yyyy}", Model.CreateDate ?? DateTime.Now))  </span>
+                <p class="p-content">
+                    @Model.Contents
+                </p>
+
+                @{
+                    var data = Model.Images.Split(';');
+                    foreach (var img in data)
+                    {
+                        if (img == "")
+                        {
+                            break;
+                        }
+                        <img class="img-chi-tiet" src="@img" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container contents">
+    <div class="title-items container row">
+        <div class="row">
+            <div class="items row">
+                @foreach (var item in ViewBag.LstItemsOder)
+                {
+                    var datas = item.Images.Split(';');
+                <div class="col-md-3">
+                    @if (datas != null)
+                    {
+                        <img class="img-item" src="@datas[0]" alt="">
+                    }
+                    <div class="title-item">
+                        <a href="">
+                            <b>@item.Tile </b><br>
+                            <span>@(String.Format("{0:dd/MM/yyyy}", item.CreateDate ?? DateTime.Now)) </span>
+                        </a>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

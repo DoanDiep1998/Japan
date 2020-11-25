@@ -72,6 +72,7 @@ namespace WebApplication6.Controllers
             var listSubCategoryByID = db.DanhMucCons.Where(x => x.ID_DanhMucCha == danhMuc.Id).ToList();
             List<SubCategory> lstSubCategory = new List<SubCategory>();
             var listItems = db.Items.ToList();
+
             foreach (var itemSub in listSubCategoryByID)
             {
                 SubCategory sub = new SubCategory();
@@ -133,7 +134,6 @@ namespace WebApplication6.Controllers
             }
             catch (Exception)
             {
-
                 return "0";
             }
             

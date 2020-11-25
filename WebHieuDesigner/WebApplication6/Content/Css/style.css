@@ -1,36 +1,35 @@
-body{
-	 margin: 0;
-	 padding: 0;
-	 background: #FFFFFF;
-	 /*font-family: Montserrat;*/
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF;
+	font-family: 'Montserrat', sans-serif;
 }.menu-header nav{
 	    padding-left: 0px !important; 
 	    padding-right: 0px !important;
 	    border-bottom: solid 1px;
 	border-color: #E0E0E0;
 }
-.logo{
- font-family: 'Inter', sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 20px;
-line-height: 24px;
-color: #000000;
+.logo {
+	font-family: 'Inter', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 24px;
+	color: #000000;
 }
 .right-content{
 
 }
-.right-content a{
-	  white-space: nowrap;
-    width: fit-content;
-	width: 100%;
-	font-family: Montserrat;
-font-style: normal;
-font-weight: bold;
-font-size: 14px;
-line-height: 17px;
-color: #000000;
-}
+	.right-content a {
+		white-space: nowrap;
+		width: 100%;
+		font-family: 'Montserrat', sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 17px;
+		color: #000000;
+	}
 
 .right-content a:hover{
 	text-decoration:none;
@@ -96,21 +95,31 @@ color: #FF3D3D;
 	margin-bottom :10px;
 	padding: 0px;
 }
-.title-items h4{padding-left:15px;
-	font-style: normal;
-font-weight: bold;
-font-size: 20px;
-line-height: 24px;
-text-transform: uppercase;
-color: #374F6E;
-}
-.view-all{
+	.title-items h4 {
+		margin-bottom: 0px;
+		padding-left: 15px;
+		font-style: normal;
+		font-weight: bold;
+
+		font-size: 20px;
+		line-height: 24px;
+		text-transform: uppercase;
+		color: #0F916E;
+	}
+.view-all {
 	margin-left: 10px;
-	  border-width: 1px;
+	border-width: 1px;
 	border-radius: 5px;
-	color: #2F80ED;
-	border-color: #2F80ED;
+	color: #0F916E;
+	background-color: white;
+	border-color: #0F916E;
 }
+.view-all  a{
+	color: #0F916E;
+}
+	.view-all a :hover {
+		color: #0F916E;
+	}
 .title-item{
 	font-style: normal;
 
@@ -124,10 +133,9 @@ line-height: 17px;
     margin-top: 10px;
     margin-bottom: 10px;
     }
-.img-item{
+.img-item {
 	width: 100%;
-	
-
+	height: inherit;
 }
 .title-item b{
 font-weight: bold;
@@ -154,9 +162,9 @@ font-size: 20px;
 text-transform: uppercase;
 color: #FFFFFF;
 }
-.text-blue-3{
-	color:#56CCF2 !important;
-	 padding-left: 5px;
+.text-blue-3 {
+	color: #6FCF97 !important;
+	padding-left: 5px;
 }
 .content-footer-text span{
 	color: #FFFFFF;

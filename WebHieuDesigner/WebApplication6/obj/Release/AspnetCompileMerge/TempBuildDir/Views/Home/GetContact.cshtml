@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+<style>
+    .form-contact {
+        margin-top: 0px;
+        margin-bottom: 25px;
+    }
+
+    .bnt-send {
+        background: #0F916E;
+        border-radius: 4px;
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 23px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .title-baogia {
+        color: #FFFFFF;
+    }
+
+    .icons img {
+        width: 45px;
+        height: 45px;
+        margin-left: 20px;
+    }
+</style>
+<h4 class="title-baogia">  Nhận báo giá  </h4>
+<br />
+<div class="row form-contact">
+    <div class="col-md-3">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Họ tên bạn" value="" />
+    </div>
+    <div class="col-md-3">
+        <input type="text" class="form-control" id="email" name="name" placeholder="Email" value="" />
+    </div>
+    <div class="col-md-2">
+        <input type="text" class="form-control" id="sdt" name="name" placeholder="Số điện thoại" value="" />
+    </div>
+    <div class="col-md-4">
+        @Html.DropDownList("listItems", null, htmlAttributes: new { @class = "form-control" })
+    </div>
+</div>
+<div class="row form-contact">
+    <div class="col-md-3">
+        <button class="form-control bnt-send" id="btn-sends">
+            Gửi
+        </button>
+
+    </div>
+    <div class="col-md-2">
+        <p style="color:#FFFFFF;text-transform: uppercase;">Hoặc liên hệ qua:</p>
+    </div>
+    <div class="col-md-2 row icons">
+        <img src="~/Content/Img/zalo-icon.png" />
+        <img src="~/Content/Img/mess-icon.png" />
+
+    </div>
+</div>
+<script>
+    $('#btn-sends').click(function () {
+        Post_Data("/Home/ContactSend");
+    })
+
+    function Post_Data(url) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: 
+            {
+                name: $('#name').val(),
+                email : $('#email').val(),
+                sdt: $('#sdt').val(),
+                IdItem: $('#listItems').val()
+            },
+            success: function (res) {
+                if (res == '1') {
+                    alert('gửi báo giá thành công');
+
+                } else {
+                    alert('gửi báo giá  thất bại');
+                }
+            }
+        });
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

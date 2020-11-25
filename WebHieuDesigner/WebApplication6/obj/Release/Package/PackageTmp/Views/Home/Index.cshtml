@@ -1,0 +1,193 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+@model IEnumerable<WebApplication6.Models.DetailDatas>
+
+
+<style>
+
+    .carousel-item img {
+        width: 100%;
+        height: 264px;
+    }
+
+    .carousel-indicators {
+        bottom: 25px;
+    }
+</style>
+<div class="row img_banner">
+    <div class="col-md-12">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                @for (int i = 0; i < ViewBag.totalBanner1; i++)
+                {
+                    <li data-target="#demo" data-slide-to="@i"></li>
+                }
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                @foreach (var item in ViewBag.lstBanner1)
+                {
+                    var data = item.Images.Split(';');
+                    <div class="carousel-item ">
+                        @foreach (var ite in data)
+                        {
+                            if (ite == "")
+                            {
+                                break;
+                            }
+                            <img src="@ite" alt="@item.name">
+                        }
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container sub-menu">
+    <div class="row">
+        @foreach (var item in ViewBag.lstDanhMuc)
+        {
+            var data = item.Img.Split(';');
+            <div class="col-12 col-sm-12 col-md-4">
+                <a href="@Url.Action("DanhMuc", new{Id =item.Id})">
+
+                    <div class="row ml-0 ">
+
+                        @foreach (var ite in data)
+                        {
+                            if (ite == "")
+                            {
+                                break;
+                            }
+                            <img src="@ite" width="64px" height="65px" alt="">
+                        }
+                        <div class="text_sub_menu ">
+                            <span class="b-sub-menu b-blue">@item.Name</span><br>
+                            <span class="text-16-normal">@item.Content</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+@foreach (var items in Model)
+{
+    <div class="container contents">
+        <div class="title-items container row">
+            <h4>@items.Name</h4>
+            <button class="view-all"><a href="@Url.Action("DanhMuc", new{Id =items.Id})">Xem tất cả</a></button>
+        </div>
+        <div class="items row">
+
+            @foreach (var item in items.lstSubCategory)
+            {
+                foreach (var ite in item.lstItems)
+                {
+                    var data = ite.Images.Split(';').Take(1);
+            <div class="col-md-3">
+                @foreach (var img in data)
+                {
+                    if (img == "")
+                    {
+                        break;
+                    }
+                    <img class="img-item" src="@img" alt="">
+                }
+
+                <div class="title-item">
+                    <a href="@Url.Action("ChiTiet",new {Id=ite.Id })">
+                        <b>@ite.Tile </b><br>
+                        <span>@(String.Format("{0:dd/MM/yyyy}", ite.CreateDate ?? DateTime.Now))</span>
+                    </a>
+                </div>
+            </div>
+                }
+
+            }
+
+
+        </div>
+    </div>
+}
+
+<style>
+
+    .items2 {
+        width: 90%;
+        margin: 0px auto;
+    }
+
+    .slick-slide {
+        margin: 10px;
+    }
+
+        .slick-slide img {
+            width: 100%;
+            border: 0px solid #fff;
+        }
+
+    .slick-next:before {
+        content: '→';
+        color: #0F916E;
+    }
+
+    .slick-prev:before {
+        content: '←';
+        color: #0F916E;
+    }
+
+    .slick-prev, .slick-next {
+        width: 40px;
+        height: 40px;
+    }
+</style>
+<div class="container contents">
+    <div class="title-items container row">
+        <h4>Các khách hàng từng phục vụ</h4>
+
+    </div>
+    <div class="items2 container ">
+        @foreach (var item in ViewBag.lstBanner1)
+        {
+            var data = item.Images.Split(';');
+            <div>
+                @foreach (var ite in data)
+                {
+                    if (ite == "")
+                    {
+                        break;
+                    }
+                    <img src="@ite">
+                }
+            </div>
+
+        }
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('.items2').slick({
+            arrows: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+
+        // banner 1
+        $($('.carousel-inner').children('div')[0]).addClass('active');
+        $($('.carousel-indicators').children('li')[0]).addClass('active');
+
+    });
+
+</script>

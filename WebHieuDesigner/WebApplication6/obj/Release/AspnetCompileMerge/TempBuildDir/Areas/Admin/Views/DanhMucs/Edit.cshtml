@@ -1,0 +1,142 @@
+﻿@model DanhMuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>DanhMuc</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Images">Ảnh</label>
+
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" id="fileInput" onchange="loadFile(event)" type="file" value="@Model.Img">
+            @Html.HiddenFor(model => model.Img)
+        </div>
+
+
+        <div class="col-md-10">
+            <div id="show_img">
+                @{
+                    var data = Model.Img.Split(';');
+                    foreach (var ite in data)
+                    {
+                        if (ite == "")
+                        {
+                            break;
+                        }
+                        <img src="@ite" width="75" height="75" />
+
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button id="btn-save" class="btn btn-default">Lưu</button>
+
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $('#btn-save').click(function () {
+
+        if (window.FormData != undefined) {
+            var data = new FormData();
+            //lấy đối tượng upload file
+            var Upfile = [];
+
+            var Upfile = document.getElementById('fileInput');
+
+            if (Upfile.files.length === 0) {
+                data.append('Images', $('#Images').val());
+            } else {
+                // duyệt tất cả các ảnh
+                for (var i = 0; i < Upfile.files.length; i++) {
+                    // lấy các file ra khỏi đối tượng Upfile
+                    data.append('picture', Upfile.files[i]);
+                }
+            }
+
+            data.append('Id', $('#Id').val());
+            data.append('Name', $('#Name').val());
+            data.append('Content', $('#Content').val());
+            Post_Data("/Admin/DanhMucs/Edit", data);
+           
+
+        } else {
+            alert('trình duyệt không hỗ trợ upfile, vui lòng chọn trình duyệt khác!!');
+        }
+    })
+    var loadFile = function (event) {
+        var show_input = "";
+        var file = document.getElementById('fileInput');
+        // đọc chiều dài trong mảng ảnh đưa vào
+        for (var i = 0; i < file.files.length; i++) {
+            show_input += '<img src="" id="' + i + 'img" width="75" height="75" />'
+        }
+
+        // hiển thị số thẻ ảnh theo số ảnh
+        $('#show_img').html(show_input);
+        for (var i = 0; i < file.files.length; i++) {
+            // thêm Url cho từng thẻ ảnh
+            var output = document.getElementById('' + i + 'img');// mỗi một lần lặp thêm một Id vào thẻ và truyền Url theo Id đó
+            output.src = URL.createObjectURL(event.target.files[i]);
+        }
+
+    };
+    function Post_Data(url, data) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+
+            contentType: false, // không  header
+            processData: false,// ko sử lý dữ liệu
+            success: function (res) {
+                if (res == 'success') {
+                    alert('cập nhập thành công');
+
+                } else {
+                    alert('cập nhập thành công');
+                }
+            }
+        });
+    }
+</script>
+}

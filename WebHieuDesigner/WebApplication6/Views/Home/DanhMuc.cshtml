@@ -17,10 +17,13 @@
                     <ul class="navbar-nav mr-auto ">
                     </ul>
                     <ul class="navbar-nav  list_sub_category">
+                        <li class="row">
+                            <a href="" class=" active">Tất cả</a>
+                        </li>
                         @foreach (var item in Model.lstSubCategory)
                         {
                             <li class="row">
-                                <a href="" class=" active">@item.Name</a>
+                                <a href="" class="">@item.Name</a>
                             </li>
                         }
                     </ul>

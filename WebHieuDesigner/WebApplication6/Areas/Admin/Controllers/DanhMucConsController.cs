@@ -38,7 +38,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // GET: Admin/DanhMucCons/Create
         public ActionResult Create()
         {
-            ViewBag.danhmucID = new SelectList(db.DanhMucs, "Id", "Name");
+            ViewBag.ID_DanhMucCha = new SelectList(db.DanhMucs, "Id", "Name");
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace WebApplication6.Areas.Admin.Controllers
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.danhmucID = new SelectList(db.DanhMucs, "Id", "Name", danhMucCon.ID_DanhMucCha);
+            ViewBag.ID_DanhMucCha = new SelectList(db.DanhMucs, "Id", "Name", danhMucCon.ID_DanhMucCha);
             return View(danhMucCon);
         }
 
