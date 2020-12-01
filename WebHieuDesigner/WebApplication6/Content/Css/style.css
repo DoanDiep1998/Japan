@@ -194,7 +194,7 @@ padding:0px;
 }
 .list_sub_category a.active{
 font-weight: bold;
-color: #FF3D3D;
+
 text-decoration: revert;
 }
 .list_sub_category a.active:hover {

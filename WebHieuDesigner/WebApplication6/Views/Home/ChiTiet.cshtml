@@ -56,7 +56,7 @@
                         <img class="img-item" src="@datas[0]" alt="">
                     }
                     <div class="title-item">
-                        <a href="">
+                        <a href="@Url.Action("ChiTiet","Home",new { Id = @item.Id })">
                             <b>@item.Tile </b><br>
                             <span>@(String.Format("{0:dd/MM/yyyy}", item.CreateDate ?? DateTime.Now)) </span>
                         </a>

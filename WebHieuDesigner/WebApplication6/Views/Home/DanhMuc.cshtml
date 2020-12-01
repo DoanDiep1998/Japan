@@ -4,6 +4,37 @@
 
 }
 @model WebApplication6.Models.DetailDatas
+<style>
+  
+    .div-pagination {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .pagination {
+        display: inline-block;
+    }
+
+        .pagination a {
+            font-family: Montserrat;
+            background-color: #E0E0E0;
+            color: #4F4F4F;
+            float: left;
+            margin: 8px;
+            padding: 3px 11px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+            .pagination a.active {
+                background-color: #0F916E;
+                color: white;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #E0E0E0;
+            }
+</style>
 <div class="container contents">
     <div class="title-items container row"><h4 style="font-size: 24px; color: #000000 !important;">Thiết kế đồ họa</h4> </div>
     <div class="row">
@@ -18,12 +49,12 @@
                     </ul>
                     <ul class="navbar-nav  list_sub_category">
                         <li class="row">
-                            <a href="" class=" active">Tất cả</a>
+                            @*<a href="@Url.Action("DanhMuc", new{Id =ViewBag.danhMucActive,SubId =0}) " class="danhmuccon-0">Tất cả</a>*@
                         </li>
-                        @foreach (var item in Model.lstSubCategory)
+                        @foreach (var item in ViewBag.danhMucCon)
                         {
                             <li class="row">
-                                <a href="" class="">@item.Name</a>
+                                <a  href="@Url.Action("DanhMuc", new{Id =ViewBag.danhMucActive,SubId =@item.Id,Page =1}) " class="danhmuccon-@item.Id">@item.Name</a>
                             </li>
                         }
                     </ul>
@@ -37,29 +68,45 @@
                     foreach (var ite in item.lstItems)
                     {
                         var data = ite.Images.Split(';').Take(1);
-                       
-                <div class="col-md-4">
-                    @foreach (var img in data)
-                    {
-                        if (img == "")
-                        {
-                            break;
-                        }
-                        <img class="img-item" src="@img" alt="">
-                    }
 
-                    <div class="title-item">
-                        <a href="@Url.Action("ChiTiet",new {Id=@item.Id })">
-                            <b>@ite.Tile </b><br>
-                     <span>@(String.Format("{0:dd/MM/yyyy}", ite.CreateDate ?? DateTime.Now))</span>
-                        </a>
-                    </div>
-                </div>
-                    }
+                        <div class="col-md-4">
+                            @foreach (var img in data)
+                            {
+                                if (img == "")
+                                {
+                                    break;
+                                }
+                                <img class="img-item" src="@img" alt="">
+                            }
 
-                 }
+                            <div class="title-item">
+                                <a href="@Url.Action("ChiTiet",new {Id=@item.Id })">
+                                    <b>@ite.Tile </b><br>
+                                    <span>@(String.Format("{0:dd/MM/yyyy}", ite.CreateDate ?? DateTime.Now))</span>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    }
+
+                }
+            </div>
+            <br />
+        </div>
+        <div class="col-md-9 div-pagination">
+            <div class="pagination col-xs-1 text-center">
+                @{
+                    for (int i = 0; i < ViewBag.totalPage; i++)
+                    {
+                        <a href="@Url.Action("DanhMuc", new{Id =ViewBag.danhMucActive,SubId =ViewBag.danhMucConActive,Page =@i+1}) " class="page-@(i+1)">@(i+1)</a>
+                    }
+                }
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    $(".danhmuc-@(ViewBag.danhMucActive)").addClass('active');
+    $(".danhmuccon-@(ViewBag.danhMucConActive)").addClass('active');
+    $(".page-@(ViewBag.pageActive)").addClass('active');
+</script>
 

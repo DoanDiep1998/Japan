@@ -60,55 +60,88 @@ namespace WebApplication6.Controllers
             return View(lstData);
         }
 
-        public ActionResult DanhMuc(int Id)
+        public ActionResult DanhMuc(int Id =0, int SubId =0 ,int Page =1)
         {
-            var lstDanhMuc = db.DanhMucs.ToList();
-            ViewBag.lstDanhMuc = lstDanhMuc;
-            var danhMuc = lstDanhMuc.FirstOrDefault(x=>x.Id ==Id);
-            DetailDatas detailDatas = new DetailDatas();
-            detailDatas.Id = danhMuc.Id;
-            detailDatas.Name = danhMuc.Name;
-
-            var listSubCategoryByID = db.DanhMucCons.Where(x => x.ID_DanhMucCha == danhMuc.Id).ToList();
-            List<SubCategory> lstSubCategory = new List<SubCategory>();
-            var listItems = db.Items.ToList();
-
-            foreach (var itemSub in listSubCategoryByID)
+            try
             {
-                SubCategory sub = new SubCategory();
-                sub.Id = itemSub.Id;
-                sub.Name = itemSub.Name;
-              
-                List<Items> lstItems = new List<Items>();
-                var lstItemsByID = listItems.Where(x => x.ID_DanhMucCon == itemSub.Id).OrderByDescending(x => x.CreateDate).Take(4).ToList();
-                foreach (var ite in lstItemsByID)
-                {
-                    Items it = new Items();
-                    it.Id = ite.Id;
-                    it.Tile = ite.Tile;
-                    it.Contents = ite.Contents;
-                    it.CreateDate = ite.CreateDate;
-                    it.Images = ite.Images;
-                    lstItems.Add(it);
-                }
-                sub.lstItems = lstItems;
+                var lstDanhMuc = db.DanhMucs.ToList();
+                ViewBag.lstDanhMuc = lstDanhMuc;
+                ViewBag.danhMucActive = Id;
+                ViewBag.pageActive = Page;
 
-                lstSubCategory.Add(sub);
+                var danhMuc = lstDanhMuc.FirstOrDefault(x => x.Id == Id);
+                DetailDatas detailDatas = new DetailDatas();
+                detailDatas.Id = danhMuc.Id;
+                detailDatas.Name = danhMuc.Name;
+
+                var listSubCategoryByID = db.DanhMucCons.Where(x => x.ID_DanhMucCha == danhMuc.Id).ToList();
+                ViewBag.danhMucCon = listSubCategoryByID;
+                var SubCategory = new List<DanhMucCon>();
+                if (SubId !=0)
+                {
+                    SubCategory = listSubCategoryByID.Where(x => x.Id == SubId).ToList();
+                }
+                else
+                {
+                     SubCategory.Add(listSubCategoryByID.FirstOrDefault());
+                }
+                ViewBag.danhMucConActive = SubCategory.FirstOrDefault().Id;
+                List<SubCategory> lstSubCategory = new List<SubCategory>();
+                var listItems = db.Items.ToList();
+
+                foreach (var itemSub in SubCategory)
+                {
+                    SubCategory sub = new SubCategory();
+                    sub.Id = itemSub.Id;
+                    sub.Name = itemSub.Name;
+
+                    List<Items> lstItems = new List<Items>();
+                    var lstItemsByID = listItems.Where(x => x.ID_DanhMucCon == itemSub.Id).OrderByDescending(x => x.CreateDate).ToList();
+                    decimal totalPageDe = Math.Round( (decimal)lstItemsByID.Count / 9,3);
+                    ViewBag.totalPage = Math.Ceiling(totalPageDe);
+
+                    lstItemsByID = lstItemsByID.Skip((Page - 1) * 9).Take(9).ToList();
+                   
+                    foreach (var ite in lstItemsByID)
+                    {
+                        Items it = new Items();
+                        it.Id = ite.Id;
+                        it.Tile = ite.Tile;
+                        it.Contents = ite.Contents;
+                        it.CreateDate = ite.CreateDate;
+                        it.Images = ite.Images;
+                        lstItems.Add(it);
+                    }
+                    sub.lstItems = lstItems;
+                    lstSubCategory.Add(sub);
+                }
+                detailDatas.lstSubCategory = lstSubCategory;
+                return View(detailDatas);
             }
-            detailDatas.lstSubCategory = lstSubCategory;
-            return View(detailDatas);
+            catch (Exception)
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult ChiTiet(int Id)
         {
-            var lstItems = db.Items.ToList();
-            ViewBag.LstItemsOder = lstItems.OrderByDescending(x => x.CreateDate).Take(4).ToList();
-            var Item = db.Items.FirstOrDefault(x => x.Id == Id);
-            var lstDanhMuc = db.DanhMucs.ToList();
-            ViewBag.lstDanhMuc = lstDanhMuc;
-            ViewBag.Message = "Your contact page.";
-            ViewBag.paramContact = "2";
-            return View(Item);
+            try
+            {
+                var lstItems = db.Items.ToList();
+                ViewBag.LstItemsOder = lstItems.OrderByDescending(x => x.CreateDate).Take(4).ToList();
+                var Item = db.Items.FirstOrDefault(x => x.Id == Id);
+                var lstDanhMuc = db.DanhMucs.ToList();
+                ViewBag.lstDanhMuc = lstDanhMuc;
+                ViewBag.Message = "Your contact page.";
+                ViewBag.paramContact = "2";
+                return View(Item);
+            }
+            catch (Exception)
+            {
+
+                return RedirectToAction("Index");
+            }
         }
         public PartialViewResult GetContact(string Id ="") 
         {

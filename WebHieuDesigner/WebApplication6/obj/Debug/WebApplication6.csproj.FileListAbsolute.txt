@@ -95,7 +95,6 @@ C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\EntityFramework.SqlServer.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\Models.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\Newtonsoft.Json.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.Helpers.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.Mvc.dll
@@ -105,8 +104,6 @@ C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.WebPages.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.WebPages.Razor.dll
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\WebGrease.dll
-C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\Models.pdb
-C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\Models.dll.config
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\EntityFramework.xml
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\EntityFramework.SqlServer.xml
 C:\Users\admin\Desktop\HieuDesing\Git\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.Helpers.xml
