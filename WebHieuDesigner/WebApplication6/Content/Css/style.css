@@ -45,15 +45,13 @@ body {
 	margin-top: -32px;
 	position: relative;
 }
-.sub-menu ul { 
-	
+.carousel-indicators .active {
+	background-color: #0F916E;
 }
-.sub-menu li { 
+.sub-menu li {
 	background: #FFFFFF;
 	display: inline-block;
-
-	line-height: 40px; 
-	
+	line-height: 40px;
 }
 .sub-menu a:hover{
 
@@ -100,11 +98,11 @@ color: #FF3D3D;
 		padding-left: 15px;
 		font-style: normal;
 		font-weight: bold;
-
 		font-size: 20px;
 		line-height: 24px;
 		text-transform: uppercase;
 		color: #0F916E;
+		margin-top: 2px;
 	}
 .view-all {
 	margin-left: 10px;
@@ -114,9 +112,10 @@ color: #FF3D3D;
 	background-color: white;
 	border-color: #0F916E;
 }
-.view-all  a{
-	color: #0F916E;
-}
+	.view-all a {
+		color: #0F916E;
+		font-weight: bold;
+	}
 	.view-all a :hover {
 		color: #0F916E;
 	}

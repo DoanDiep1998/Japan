@@ -15,6 +15,11 @@
     .carousel-indicators {
         bottom: 25px;
     }
+    .image-container {
+        height: 500px;
+        width: 100%;
+        background-size: cover;
+    }
 </style>
 <div class="row img_banner">
     <div class="col-md-12">
@@ -41,7 +46,8 @@
                                 break;
                             }
                             <img src="@ite" alt="@item.name">
-                        }
+                                    
+                            }
 
                     </div>
                 }
@@ -54,6 +60,10 @@
         @{var count = 1; }
         @foreach (var item in ViewBag.lstDanhMuc)
         {
+            if (count >=4)
+            {
+                break;
+            }
 
             var data = item.Img.Split(';');
             <div class="col-12 col-sm-12 col-md-4">
@@ -115,6 +125,7 @@
                         break;
                     }
                 <div>
+
                     <img class="img-item" src="@img" alt="">
                 </div>
                 }

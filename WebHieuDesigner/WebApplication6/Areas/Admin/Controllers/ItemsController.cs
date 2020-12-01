@@ -92,10 +92,6 @@ namespace WebApplication6.Areas.Admin.Controllers
             ViewBag.ID_DanhMucCon = new SelectList(db.DanhMucCons, "Id", "Name");
             return View(item);
         }
-
-        // POST: Admin/Items/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         public ActionResult Edit( Item item, HttpPostedFileBase picture)
         {
