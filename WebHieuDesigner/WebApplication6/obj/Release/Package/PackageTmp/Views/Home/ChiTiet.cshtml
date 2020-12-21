@@ -17,33 +17,35 @@
 <div class="container contents">
     <div class="title-items container row">
 
-        <div class="row">
-            <div class="col-md-1"><a href="@Url.Action("Index","Home")"><img src="~/Content/Img/icon-black.png" width="30px" height="30px" /></a> </div>
-            <div class="col-md-11">
-                <h4 style="font-size: 24px; color: #000000 !important;    padding: 0px;">Thiết kế đồ họa</h4>
-                <span> @(String.Format("{0:dd/MM/yyyy}", Model.CreateDate ?? DateTime.Now))  </span>
-                <p class="p-content">
-                    @Model.Contents
-                </p>
 
-                @{
-                    var data = Model.Images.Split(';');
-                    foreach (var img in data)
+        <div class="row container" ><a href="@Url.Action("Index","Home")"><img src="~/Content/Img/icon-black.png" style="    margin-left: 15px;" width="30px" height="30px" /></a>
+        
+        </div>
+        <div class="container" style="margin-left:8% ">
+            <h4 style="font-size: 24px; color: #000000 !important;    padding: 0px; font-weight: bold;font-family: 'Montserrat', sans-serif; ">Thiết kế đồ họa</h4>
+            <span> @(String.Format("{0:dd/MM/yyyy}", Model.CreateDate ?? DateTime.Now))  </span>
+            <p class="p-content">
+                @Model.Contents
+            </p>
+
+            @{
+                var data = Model.Images.Split(';');
+                foreach (var img in data)
+                {
+                    if (img == "")
                     {
-                        if (img == "")
-                        {
-                            break;
-                        }
-                        <img class="img-chi-tiet" src="@img" />
+                        break;
                     }
+                    <img class="img-chi-tiet" src="@img" />
                 }
-            </div>
+            }
+        </div>
         </div>
     </div>
-</div>
+
 <div class="container contents">
-    <div class="title-items container row">
-        <div class="row">
+    <div class="title-items container ">
+            <h5> Cùng chuyên mục</h5>
             <div class="items row">
                 @foreach (var item in ViewBag.LstItemsOder)
                 {
@@ -54,7 +56,7 @@
                         <img class="img-item" src="@datas[0]" alt="">
                     }
                     <div class="title-item">
-                        <a href="">
+                        <a href="@Url.Action("ChiTiet","Home",new { Id = @item.Id })">
                             <b>@item.Tile </b><br>
                             <span>@(String.Format("{0:dd/MM/yyyy}", item.CreateDate ?? DateTime.Now)) </span>
                         </a>
@@ -64,4 +66,3 @@
             </div>
         </div>
     </div>
-</div>

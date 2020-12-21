@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HieuDesigner" Class="DBContextsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-3DB67SK\SQLEXPRESS;Initial Catalog=HieuDesigner;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HieuDesignerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Item" Member="Items">
+    <Type Name="Item">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tile" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Contents" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Images" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_DanhMucCon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Item_Baner" Member="Baners" ThisKey="Id" OtherKey="id_Item" Type="Baner" />
+      <Association Name="Item_BaoGia" Member="BaoGias" ThisKey="Id" OtherKey="itemID" Type="BaoGia" />
+      <Association Name="DanhMucCon_Item" Member="DanhMucCon" ThisKey="ID_DanhMucCon" OtherKey="Id" Type="DanhMucCon" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Admins" Member="Admins">
     <Type Name="Admin">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -13,6 +26,8 @@
       <Column Name="name" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="Images" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_Item" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Item_Baner" Member="Item" ThisKey="id_Item" OtherKey="Id" Type="Item" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.BaoGia" Member="BaoGias">
@@ -42,18 +57,6 @@
       <Column Name="ID_DanhMucCha" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DanhMucCon_Item" Member="Items" ThisKey="Id" OtherKey="ID_DanhMucCon" Type="Item" />
       <Association Name="DanhMuc_DanhMucCon" Member="DanhMuc" ThisKey="ID_DanhMucCha" OtherKey="Id" Type="DanhMuc" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Item" Member="Items">
-    <Type Name="Item">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Tile" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="Contents" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Images" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ID_DanhMucCon" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Item_BaoGia" Member="BaoGias" ThisKey="Id" OtherKey="itemID" Type="BaoGia" />
-      <Association Name="DanhMucCon_Item" Member="DanhMucCon" ThisKey="ID_DanhMucCon" OtherKey="Id" Type="DanhMucCon" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

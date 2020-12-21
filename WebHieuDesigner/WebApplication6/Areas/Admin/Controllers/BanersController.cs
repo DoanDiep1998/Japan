@@ -40,6 +40,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // GET: Admin/Baners/Create
         public ActionResult Create()
         {
+            ViewBag.ID_Item = new SelectList(db.Items, "Id", "Tile");
             return View();
         }
 
@@ -47,8 +48,9 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "id,name,location,Images")] Baner baner, HttpPostedFileBase picture)
+        public ActionResult Create([Bind(Include = "id,name,location,Images,ID_Item")] Baner baner, HttpPostedFileBase picture)
         {
+            ViewBag.ID_Item = new SelectList(db.Items, "Id", "Tile");
             string pictures = "";
 
             for (int i = 0; i < Request.Files.Count; i++)
@@ -76,6 +78,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // GET: Admin/Baners/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.ID_Item = new SelectList(db.Items, "Id", "Tile");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -92,8 +95,9 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,name,location,Images")] Baner baner, HttpPostedFileBase picture)
+        public ActionResult Edit([Bind(Include = "id,name,location,Images,ID_Item")] Baner baner, HttpPostedFileBase picture)
         {
+            ViewBag.ID_Item = new SelectList(db.Items, "Id", "Tile");
             string pictures = "";
             if (picture != null)
             {
@@ -125,6 +129,7 @@ namespace WebApplication6.Areas.Admin.Controllers
                 baners.Images = pictures;
                 baners.location = baner.location;
                 baners.name = baner.name;
+                baners.id_Item = baner.id_Item;
                 db.SubmitChanges();
                 return RedirectToAction("Index");
             }

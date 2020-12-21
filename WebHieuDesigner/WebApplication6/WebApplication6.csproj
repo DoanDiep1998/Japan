@@ -147,6 +147,29 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\BaoGias\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoGias\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoGias\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoGias\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BaoGias\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucCons\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucCons\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucCons\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucCons\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucCons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Items\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Items\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Items\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Items\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Items\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -170,40 +193,18 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Baners\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Baners\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Baners\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Baners\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Baners\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\BaoGias\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BaoGias\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\BaoGias\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\BaoGias\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\BaoGias\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucs\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucCons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucCons\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucCons\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucCons\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhMucCons\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Items\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Items\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Items\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Items\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Items\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
-    <None Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="DBContexts.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DBContexts.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Views\Baners\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Baners\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Baners\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Baners\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Baners\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Items\changePass.cshtml" />
     <None Include="DBContexts.dbml.layout">
       <DependentUpon>DBContexts.dbml</DependentUpon>
     </None>

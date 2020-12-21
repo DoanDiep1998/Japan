@@ -15,6 +15,11 @@
     .carousel-indicators {
         bottom: 25px;
     }
+    .image-container {
+        height: 500px;
+        width: 100%;
+        background-size: cover;
+    }
 </style>
 <div class="row img_banner">
     <div class="col-md-12">
@@ -41,7 +46,8 @@
                                 break;
                             }
                             <img src="@ite" alt="@item.name">
-                        }
+                                    
+                            }
 
                     </div>
                 }
@@ -51,14 +57,19 @@
 </div>
 <div class="container sub-menu">
     <div class="row">
+        @{var count = 1; }
         @foreach (var item in ViewBag.lstDanhMuc)
         {
+            if (count >=4)
+            {
+                break;
+            }
+
             var data = item.Img.Split(';');
             <div class="col-12 col-sm-12 col-md-4">
-                <a href="@Url.Action("DanhMuc", new{Id =item.Id})">
+                <a href="@Url.Action("DanhMuc", new { Id = item.Id })">
 
                     <div class="row ml-0 ">
-
                         @foreach (var ite in data)
                         {
                             if (ite == "")
@@ -66,11 +77,25 @@
                                 break;
                             }
                             <img src="@ite" width="64px" height="65px" alt="">
+
                         }
                         <div class="text_sub_menu ">
-                            <span class="b-sub-menu b-blue">@item.Name</span><br>
+                            @if (count == 1)
+                            {
+                                <span class="b-sub-menu b-blue">@item.Name</span><br>
+                            }
+                            else if (count == 2)
+                            {
+                                <span class="b-sub-menu b-green">@item.Name</span><br>
+                            }
+                            else
+                            {
+                                <span class="b-sub-menu b-orange">@item.Name</span><br>
+                            }
+                            @{count = count + 1;}
                             <span class="text-16-normal">@item.Content</span>
                         </div>
+
                     </div>
                 </a>
             </div>
@@ -85,7 +110,7 @@
             <h4>@items.Name</h4>
             <button class="view-all"><a href="@Url.Action("DanhMuc", new{Id =items.Id})">Xem tất cả</a></button>
         </div>
-        <div class="items row">
+        <div class="items row ">
 
             @foreach (var item in items.lstSubCategory)
             {
@@ -99,7 +124,10 @@
                     {
                         break;
                     }
+                <div>
+
                     <img class="img-item" src="@img" alt="">
+                </div>
                 }
 
                 <div class="title-item">
@@ -155,7 +183,7 @@
 
     </div>
     <div class="items2 container ">
-        @foreach (var item in ViewBag.lstBanner1)
+        @foreach (var item in ViewBag.lstBanner2)
         {
             var data = item.Images.Split(';');
             <div>
@@ -180,8 +208,8 @@
         $('.items2').slick({
             arrows: true,
             infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3
+            slidesToShow: 1,
+            slidesToScroll:1
         });
 
         // banner 1

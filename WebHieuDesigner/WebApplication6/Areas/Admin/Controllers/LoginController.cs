@@ -26,5 +26,6 @@ namespace WebApplication6.Areas.Admin.Controllers
             }
             return View();
         }
+
     }
 }

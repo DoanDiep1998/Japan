@@ -21,6 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Images)
         </th>
+        <th> sản phẩm</th>
         <th></th>
     </tr>
 
@@ -46,6 +47,9 @@
                 }
 
             }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item.Tile)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

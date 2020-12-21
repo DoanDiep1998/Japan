@@ -160,7 +160,37 @@ namespace WebApplication6.Areas.Admin.Controllers
             db.SubmitChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult changePass()
+        {
+            return View();
+        }
+        [HttpPost]
+         public ActionResult changePass(string passold, string pass1, string pass2)
+        {
+            if (Session["UserId"] == null)
+            {
+                TempData["msg"] = "<script>alert('bạn chưa đăng nhập');</script>";
 
+                return View();
+            }
+            if (pass1 !=pass2)
+            {
+                TempData["msg"] = "<script>alert('mật khẩu  không khớp');</script>";
+         
+                return View();
+            }
+            var admindd = db.Admins.FirstOrDefault(x => x.Pass == passold);
+            if (admindd == null)
+            {
+                TempData["msg"] = "<script>alert('mật khẩu  cũ không đúng');</script>";
+
+                return View();
+            }
+            admindd.Pass = pass1;
+            db.SubmitChanges();
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

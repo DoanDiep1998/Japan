@@ -97,7 +97,6 @@
             var Upfile = [];
            
             var Upfile = document.getElementById('fileInput');
-            debugger;
             if (Upfile.files.length === 0) {
                 data.append('Images', $('#Images').val());
             } else {
@@ -141,7 +140,8 @@
             type: 'POST',
             url: url,
             data: data,
-
+            cache: false,
+            enctype: 'multipart/form-data',
             contentType: false, // không  header
             processData: false,// ko sử lý dữ liệu
             success: function (res) {

@@ -117,7 +117,8 @@
             type: 'POST',
             url: url,
             data: data,
-
+            cache: false,
+            enctype: 'multipart/form-data',
             contentType: false, // không  header
             processData: false,// ko sử lý dữ liệu
             success: function (res) {

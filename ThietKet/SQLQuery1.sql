@@ -23,12 +23,15 @@ create Table Item(
  FOREIGN KEY (ID_DanhMucCon) REFERENCES DanhMucCon(Id)
 ) 
 
-Create table Baner (
+create table Baner (
 id int Primary key identity,
 name NvarChar(500),
 Images Nvarchar(max),
-location int
+location int,
+id_Item INT ,
+FOREIGN KEY (id_Item) REFERENCES Item(Id)
 )
+
 create Table BaoGia(
  Id int Primary key identity,
  HotenKH NvarChar(500),

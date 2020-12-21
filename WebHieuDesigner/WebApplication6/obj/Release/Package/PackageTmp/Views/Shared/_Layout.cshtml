@@ -16,9 +16,24 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    @*<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <style>
+        a.active {
+            color: #0F916E;
+            text-decoration: none !important;
+        }
+        a:hover {
+            /*color: #0056b3;*/
+             text-decoration: none;
+        }
+
+    </style>
     <div class="container menu-header ">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
 
@@ -32,8 +47,8 @@
                 <ul class="navbar-nav  right-content">
                     @foreach (var item in ViewBag.lstDanhMuc)
                     {
-                        <li class="nav-item col">
-                            <a href="@item.Id">@item.Name</a>
+                        <li class="nav-item  col">
+                            <a class="danhmuc-@item.Id" href="@Url.Action("DanhMuc", new{Id =@item.Id,SubId =0,Page =1})">@item.Name</a>
                         </li>
                     }
                 </ul>
@@ -53,8 +68,8 @@
                 @Html.Action("GetContact", "Home",new{Id=ViewBag.paramContact})
             </div>
             <div class="row">
-                <img src="~/Content/Img/bg_hieu_nguyen.png" class=" col-md-3 col-12" alt="">
-                <div class="content-footer-text  col-md-9 col-12">
+                @*<img src="~/Content/Img/bg_hieu_nguyen.png" class=" col-md-3 col-12" alt="">*@
+                <div class="content-footer-text   col-md-12 col-12">
                     <div class="col row"><h3>HIẾU NGUYỄN </h3> <h3 class="text-blue-3">Freelance thiết kế đồ họa</h3></div>
                     <span>Tôi là chuyên gia thiết kế đồ họa. Với nhiều năm kinh nghiệm tôi có thể thiết kế Logo & nhận diện thương hiệu, thiết kế ấn phẩm quảng cáo, truyền thông đa phương tiện. Thiết kế Website trưng bày sản phẩm, Landing Page bán hàng. Bạn sẽ có được sản phẩm thiết kế tuyệt vời với giá ưu đãi nhất.</span>
                     <h3>Nhắn tin hoặc gọi cho tôi để được tư vấn </h3>
@@ -64,7 +79,7 @@
                         <div class="col-12 col-md-6"><span><img class="icon_footer" src="~/Content/Img/icon_phone.png" width="22px" height="22px" alt="">0981 279 682 - Zalo</span></div>
                         <div class="col-12 col-md-6"><img class="icon_footer" src="~/Content/Img/icon_fb.png" width="22px" height="22px" alt=""><span>fb.com/hieuthietke.123</span></div>
                     </div>
-                    <br>
+              
                     <div class="row">
                         <div class="col-12 col-md-6"><img class="icon_footer" src="~/Content/Img/icon_glb.png" width="22px" height="22px" alt=""><span>hieuthietke.com</span></div>
                         <div class="col-12 col-md-6"><img class="icon_footer" src="~/Content/Img/icon_mail.png" width="22px" height="22px" alt=""><span>thietke.hieunguyen@gmail.com</span></div>

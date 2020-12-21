@@ -30,6 +30,9 @@ namespace WebApplication6
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertItem(Item instance);
+    partial void UpdateItem(Item instance);
+    partial void DeleteItem(Item instance);
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
@@ -45,9 +48,6 @@ namespace WebApplication6
     partial void InsertDanhMucCon(DanhMucCon instance);
     partial void UpdateDanhMucCon(DanhMucCon instance);
     partial void DeleteDanhMucCon(DanhMucCon instance);
-    partial void InsertItem(Item instance);
-    partial void UpdateItem(Item instance);
-    partial void DeleteItem(Item instance);
     #endregion
 		
 		public DBContextsDataContext() : 
@@ -78,6 +78,14 @@ namespace WebApplication6
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<Item> Items
+		{
+			get
+			{
+				return this.GetTable<Item>();
+			}
 		}
 		
 		public System.Data.Linq.Table<Admin> Admins
@@ -119,13 +127,284 @@ namespace WebApplication6
 				return this.GetTable<DanhMucCon>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Item")]
+	public partial class Item : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<Item> Items
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Tile;
+		
+		private string _Contents;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _Images;
+		
+		private System.Nullable<int> _ID_DanhMucCon;
+		
+		private EntitySet<Baner> _Baners;
+		
+		private EntitySet<BaoGia> _BaoGias;
+		
+		private EntityRef<DanhMucCon> _DanhMucCon;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTileChanging(string value);
+    partial void OnTileChanged();
+    partial void OnContentsChanging(string value);
+    partial void OnContentsChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnImagesChanging(string value);
+    partial void OnImagesChanged();
+    partial void OnID_DanhMucConChanging(System.Nullable<int> value);
+    partial void OnID_DanhMucConChanged();
+    #endregion
+		
+		public Item()
+		{
+			this._Baners = new EntitySet<Baner>(new Action<Baner>(this.attach_Baners), new Action<Baner>(this.detach_Baners));
+			this._BaoGias = new EntitySet<BaoGia>(new Action<BaoGia>(this.attach_BaoGias), new Action<BaoGia>(this.detach_BaoGias));
+			this._DanhMucCon = default(EntityRef<DanhMucCon>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this.GetTable<Item>();
+				return this._Id;
 			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tile", DbType="NVarChar(500)")]
+		public string Tile
+		{
+			get
+			{
+				return this._Tile;
+			}
+			set
+			{
+				if ((this._Tile != value))
+				{
+					this.OnTileChanging(value);
+					this.SendPropertyChanging();
+					this._Tile = value;
+					this.SendPropertyChanged("Tile");
+					this.OnTileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contents", DbType="NVarChar(MAX)")]
+		public string Contents
+		{
+			get
+			{
+				return this._Contents;
+			}
+			set
+			{
+				if ((this._Contents != value))
+				{
+					this.OnContentsChanging(value);
+					this.SendPropertyChanging();
+					this._Contents = value;
+					this.SendPropertyChanged("Contents");
+					this.OnContentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Images", DbType="NVarChar(MAX)")]
+		public string Images
+		{
+			get
+			{
+				return this._Images;
+			}
+			set
+			{
+				if ((this._Images != value))
+				{
+					this.OnImagesChanging(value);
+					this.SendPropertyChanging();
+					this._Images = value;
+					this.SendPropertyChanged("Images");
+					this.OnImagesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DanhMucCon", DbType="Int")]
+		public System.Nullable<int> ID_DanhMucCon
+		{
+			get
+			{
+				return this._ID_DanhMucCon;
+			}
+			set
+			{
+				if ((this._ID_DanhMucCon != value))
+				{
+					if (this._DanhMucCon.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_DanhMucConChanging(value);
+					this.SendPropertyChanging();
+					this._ID_DanhMucCon = value;
+					this.SendPropertyChanged("ID_DanhMucCon");
+					this.OnID_DanhMucConChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_Baner", Storage="_Baners", ThisKey="Id", OtherKey="id_Item")]
+		public EntitySet<Baner> Baners
+		{
+			get
+			{
+				return this._Baners;
+			}
+			set
+			{
+				this._Baners.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_BaoGia", Storage="_BaoGias", ThisKey="Id", OtherKey="itemID")]
+		public EntitySet<BaoGia> BaoGias
+		{
+			get
+			{
+				return this._BaoGias;
+			}
+			set
+			{
+				this._BaoGias.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhMucCon_Item", Storage="_DanhMucCon", ThisKey="ID_DanhMucCon", OtherKey="Id", IsForeignKey=true)]
+		public DanhMucCon DanhMucCon
+		{
+			get
+			{
+				return this._DanhMucCon.Entity;
+			}
+			set
+			{
+				DanhMucCon previousValue = this._DanhMucCon.Entity;
+				if (((previousValue != value) 
+							|| (this._DanhMucCon.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DanhMucCon.Entity = null;
+						previousValue.Items.Remove(this);
+					}
+					this._DanhMucCon.Entity = value;
+					if ((value != null))
+					{
+						value.Items.Add(this);
+						this._ID_DanhMucCon = value.Id;
+					}
+					else
+					{
+						this._ID_DanhMucCon = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DanhMucCon");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Baners(Baner entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = this;
+		}
+		
+		private void detach_Baners(Baner entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = null;
+		}
+		
+		private void attach_BaoGias(BaoGia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = this;
+		}
+		
+		private void detach_BaoGias(BaoGia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Item = null;
 		}
 	}
 	
@@ -253,6 +532,10 @@ namespace WebApplication6
 		
 		private System.Nullable<int> _location;
 		
+		private System.Nullable<int> _id_Item;
+		
+		private EntityRef<Item> _Item;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -265,10 +548,13 @@ namespace WebApplication6
     partial void OnImagesChanged();
     partial void OnlocationChanging(System.Nullable<int> value);
     partial void OnlocationChanged();
+    partial void Onid_ItemChanging(System.Nullable<int> value);
+    partial void Onid_ItemChanged();
     #endregion
 		
 		public Baner()
 		{
+			this._Item = default(EntityRef<Item>);
 			OnCreated();
 		}
 		
@@ -348,6 +634,64 @@ namespace WebApplication6
 					this._location = value;
 					this.SendPropertyChanged("location");
 					this.OnlocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_Item", DbType="Int")]
+		public System.Nullable<int> id_Item
+		{
+			get
+			{
+				return this._id_Item;
+			}
+			set
+			{
+				if ((this._id_Item != value))
+				{
+					if (this._Item.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_ItemChanging(value);
+					this.SendPropertyChanging();
+					this._id_Item = value;
+					this.SendPropertyChanged("id_Item");
+					this.Onid_ItemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_Baner", Storage="_Item", ThisKey="id_Item", OtherKey="Id", IsForeignKey=true)]
+		public Item Item
+		{
+			get
+			{
+				return this._Item.Entity;
+			}
+			set
+			{
+				Item previousValue = this._Item.Entity;
+				if (((previousValue != value) 
+							|| (this._Item.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Item.Entity = null;
+						previousValue.Baners.Remove(this);
+					}
+					this._Item.Entity = value;
+					if ((value != null))
+					{
+						value.Baners.Add(this);
+						this._id_Item = value.Id;
+					}
+					else
+					{
+						this._id_Item = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Item");
 				}
 			}
 		}
@@ -934,257 +1278,6 @@ namespace WebApplication6
 		{
 			this.SendPropertyChanging();
 			entity.DanhMucCon = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Item")]
-	public partial class Item : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Tile;
-		
-		private string _Contents;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private string _Images;
-		
-		private System.Nullable<int> _ID_DanhMucCon;
-		
-		private EntitySet<BaoGia> _BaoGias;
-		
-		private EntityRef<DanhMucCon> _DanhMucCon;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnTileChanging(string value);
-    partial void OnTileChanged();
-    partial void OnContentsChanging(string value);
-    partial void OnContentsChanged();
-    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreateDateChanged();
-    partial void OnImagesChanging(string value);
-    partial void OnImagesChanged();
-    partial void OnID_DanhMucConChanging(System.Nullable<int> value);
-    partial void OnID_DanhMucConChanged();
-    #endregion
-		
-		public Item()
-		{
-			this._BaoGias = new EntitySet<BaoGia>(new Action<BaoGia>(this.attach_BaoGias), new Action<BaoGia>(this.detach_BaoGias));
-			this._DanhMucCon = default(EntityRef<DanhMucCon>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tile", DbType="NVarChar(500)")]
-		public string Tile
-		{
-			get
-			{
-				return this._Tile;
-			}
-			set
-			{
-				if ((this._Tile != value))
-				{
-					this.OnTileChanging(value);
-					this.SendPropertyChanging();
-					this._Tile = value;
-					this.SendPropertyChanged("Tile");
-					this.OnTileChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contents", DbType="NVarChar(MAX)")]
-		public string Contents
-		{
-			get
-			{
-				return this._Contents;
-			}
-			set
-			{
-				if ((this._Contents != value))
-				{
-					this.OnContentsChanging(value);
-					this.SendPropertyChanging();
-					this._Contents = value;
-					this.SendPropertyChanged("Contents");
-					this.OnContentsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this.OnCreateDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreateDate = value;
-					this.SendPropertyChanged("CreateDate");
-					this.OnCreateDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Images", DbType="NVarChar(MAX)")]
-		public string Images
-		{
-			get
-			{
-				return this._Images;
-			}
-			set
-			{
-				if ((this._Images != value))
-				{
-					this.OnImagesChanging(value);
-					this.SendPropertyChanging();
-					this._Images = value;
-					this.SendPropertyChanged("Images");
-					this.OnImagesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DanhMucCon", DbType="Int")]
-		public System.Nullable<int> ID_DanhMucCon
-		{
-			get
-			{
-				return this._ID_DanhMucCon;
-			}
-			set
-			{
-				if ((this._ID_DanhMucCon != value))
-				{
-					if (this._DanhMucCon.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_DanhMucConChanging(value);
-					this.SendPropertyChanging();
-					this._ID_DanhMucCon = value;
-					this.SendPropertyChanged("ID_DanhMucCon");
-					this.OnID_DanhMucConChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Item_BaoGia", Storage="_BaoGias", ThisKey="Id", OtherKey="itemID")]
-		public EntitySet<BaoGia> BaoGias
-		{
-			get
-			{
-				return this._BaoGias;
-			}
-			set
-			{
-				this._BaoGias.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DanhMucCon_Item", Storage="_DanhMucCon", ThisKey="ID_DanhMucCon", OtherKey="Id", IsForeignKey=true)]
-		public DanhMucCon DanhMucCon
-		{
-			get
-			{
-				return this._DanhMucCon.Entity;
-			}
-			set
-			{
-				DanhMucCon previousValue = this._DanhMucCon.Entity;
-				if (((previousValue != value) 
-							|| (this._DanhMucCon.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._DanhMucCon.Entity = null;
-						previousValue.Items.Remove(this);
-					}
-					this._DanhMucCon.Entity = value;
-					if ((value != null))
-					{
-						value.Items.Add(this);
-						this._ID_DanhMucCon = value.Id;
-					}
-					else
-					{
-						this._ID_DanhMucCon = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("DanhMucCon");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_BaoGias(BaoGia entity)
-		{
-			this.SendPropertyChanging();
-			entity.Item = this;
-		}
-		
-		private void detach_BaoGias(BaoGia entity)
-		{
-			this.SendPropertyChanging();
-			entity.Item = null;
 		}
 	}
 }
