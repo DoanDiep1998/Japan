@@ -40,7 +40,17 @@ namespace WebApplication6.Areas.Admin.Controllers
         // GET: Admin/Baners/Create
         public ActionResult Create()
         {
-            ViewBag.ID_Item = new SelectList(db.Items, "Id", "Tile");
+
+            List<Item> lstItem = new List<Item>();
+            //Item defauQestion = new Item()
+            //{
+            //    Id = 999999,
+            //    Tile = "--Không chọn--",
+            //};
+            //lstItem.Add(defauQestion);
+            lstItem.AddRange(db.Items);
+            lstItem.OrderByDescending(x => x.Id);
+            ViewBag.ID_Item = new SelectList(lstItem, "Id", "Tile");
             return View();
         }
 
@@ -60,8 +70,8 @@ namespace WebApplication6.Areas.Admin.Controllers
                 // lấy tên file
                 string fileName = picture.FileName;
                 // lưu file
-                picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
-                pictures += "/Content/FileUpload/" + fileName + ";";
+                picture.SaveAs(Server.MapPath(@"~/FileUpload/") + fileName);
+                pictures += "/FileUpload/" + fileName + ";";
             }
             //add nội dung
             baner.Images = pictures;
@@ -78,7 +88,17 @@ namespace WebApplication6.Areas.Admin.Controllers
         // GET: Admin/Baners/Edit/5
         public ActionResult Edit(int? id)
         {
-            ViewBag.ID_Item = new SelectList(db.Items, "Id", "Tile");
+         
+            List<Item> lstItem = new List<Item>();
+            //Item defauQestion = new Item()
+            //{
+            //    Id = 999999,
+            //    Tile = "--Không chọn--",
+            //};
+            //lstItem.Add(defauQestion);
+            lstItem.AddRange(db.Items);
+            lstItem.OrderByDescending(x => x.Id);
+            ViewBag.ID_Item = new SelectList(lstItem, "Id", "Tile");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,8 +129,8 @@ namespace WebApplication6.Areas.Admin.Controllers
                     // lấy tên file
                     string fileName = picture.FileName;
                     // lưu file
-                    picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
-                    pictures += "/Content/FileUpload/" + fileName + ";";
+                    picture.SaveAs(Server.MapPath(@"~/FileUpload/") + fileName);
+                    pictures += "/FileUpload/" + fileName + ";";
 
                 }
 

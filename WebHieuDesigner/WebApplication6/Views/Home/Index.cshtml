@@ -76,7 +76,7 @@
                             {
                                 break;
                             }
-                            <img src="@ite" width="64px" height="65px" alt="">
+                            <img src="@ite" width="64px" height="67px" alt="">
 
                         }
                         <div class="text_sub_menu ">
@@ -186,16 +186,18 @@
         @foreach (var item in ViewBag.lstBanner2)
         {
             var data = item.Images.Split(';');
-            <div>
-                @foreach (var ite in data)
+        <div>
+            @foreach (var ite in data)
+            {
+                if (ite == "")
                 {
-                    if (ite == "")
-                    {
-                        break;
-                    }
-                    <img src="@ite">
+                    break;
                 }
-            </div>
+
+                <a href="@Url.Action("ChiTiet",new {Id=item.id_Item})"> <img src="@ite"></a>
+
+            }
+        </div>
 
         }
     </div>

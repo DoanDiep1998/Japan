@@ -8,8 +8,6 @@
 <h2>Create</h2>
 
 
-
-    @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
     <h4>DanhMuc</h4>
@@ -56,7 +54,7 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 <script>
     $('#btn-save').click(function () {
 
@@ -97,10 +95,11 @@
     };
     function Post_Data(url, data) {
         $.ajax({
-            type: 'POST',
+            type: "POST",
             url: url,
             data: data,
-
+            cache: false,
+            enctype: "multipart/form-data",
             contentType: false, // không  header
             processData: false,// ko sử lý dữ liệu
             success: function (res) {
@@ -110,6 +109,9 @@
                 } else {
                     alert('cập nhập thành công');
                 }
+            }, error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
             }
         });
     }

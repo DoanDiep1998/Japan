@@ -58,8 +58,8 @@ namespace WebApplication6.Areas.Admin.Controllers
                 // lấy tên file
                 string fileName = picture.FileName;
                 // lưu file
-                picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
-                pictures += "/Content/FileUpload/" + fileName + ";";
+                picture.SaveAs(Server.MapPath(@"~/FileUpload/") + fileName);
+                pictures += "/FileUpload/" + fileName + ";";
              
 
             }
@@ -106,8 +106,8 @@ namespace WebApplication6.Areas.Admin.Controllers
                     // lấy tên file
                     string fileName = picture.FileName;
                     // lưu file
-                    picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
-                    pictures += "/Content/FileUpload/" + fileName + ";";
+                    picture.SaveAs(Server.MapPath(@"~/FileUpload/") + fileName);
+                    pictures += "/FileUpload/" + fileName + ";";
 
                 }
 
@@ -155,10 +155,20 @@ namespace WebApplication6.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Item item = db.Items.First(x => x.Id == id);
-            db.Items.DeleteOnSubmit(item);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Item item = db.Items.First(x => x.Id == id);
+                db.Items.DeleteOnSubmit(item);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                TempData["msg"] = "<script>alert('sản phẩm này  đã có banner hoặc báo giá, nếu bạn muốn xóa thì vui lòng xóa banner và báo giá');</script>";
+                return View();
+            }
+          
         }
         [HttpGet]
         public ActionResult changePass()

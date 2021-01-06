@@ -36,23 +36,29 @@
     </style>
     <div class="container menu-header ">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
-
-            <a href="@Url.Action("Index","Home")"><h1 class="navbar-brand logo">hieuthietke.com </h1></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                </ul>
-                <ul class="navbar-nav  right-content">
-                    @foreach (var item in ViewBag.lstDanhMuc)
-                    {
-                        <li class="nav-item  col">
-                            <a class="danhmuc-@item.Id" href="@Url.Action("DanhMuc", new{Id =@item.Id,SubId =0,Page =1})">@item.Name</a>
-                        </li>
-                    }
-                </ul>
-            </div>
+            <div>
+                <a href="@Url.Action("Index","Home")"><h1 class="navbar-brand logo">hieuthietke.com </h1></a>
+                </div>
+                <div class="icons-header">
+                    <img src="~/Content/Img/igIcon.png" width="20px" height="20px" />
+                    <img src="~/Content/Img/fbIcon.png" width="20px" height="20px" />
+                    <img src="~/Content/Img/ytIcon.png" width="28px" height="20px" />
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    <ul class="navbar-nav  right-content">
+                        @foreach (var item in ViewBag.lstDanhMuc)
+                        {
+                            <li class="nav-item  col">
+                                <a class="danhmuc-@item.Id" href="@Url.Action("DanhMuc", new{Id =@item.Id,SubId =0,Page =1})">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
         </nav>
     </div>
     <div class="">
@@ -73,9 +79,7 @@
                     <div class="col row"><h3>HIẾU NGUYỄN </h3> <h3 class="text-blue-3">Freelance thiết kế đồ họa</h3></div>
                     <span>Tôi là chuyên gia thiết kế đồ họa. Với nhiều năm kinh nghiệm tôi có thể thiết kế Logo & nhận diện thương hiệu, thiết kế ấn phẩm quảng cáo, truyền thông đa phương tiện. Thiết kế Website trưng bày sản phẩm, Landing Page bán hàng. Bạn sẽ có được sản phẩm thiết kế tuyệt vời với giá ưu đãi nhất.</span>
                     <h3>Nhắn tin hoặc gọi cho tôi để được tư vấn </h3>
-                    <div class="row">
-
-
+                    <div class="row" style="    margin-bottom: 10px;">
                         <div class="col-12 col-md-6"><span><img class="icon_footer" src="~/Content/Img/icon_phone.png" width="22px" height="22px" alt="">0981 279 682 - Zalo</span></div>
                         <div class="col-12 col-md-6"><img class="icon_footer" src="~/Content/Img/icon_fb.png" width="22px" height="22px" alt=""><span>fb.com/hieuthietke.123</span></div>
                     </div>

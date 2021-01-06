@@ -119,10 +119,21 @@ namespace WebApplication6.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DanhMucCon danhMucCon = db.DanhMucCons.First(x => x.Id == id);
-            db.DanhMucCons.DeleteOnSubmit(danhMucCon);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                DanhMucCon danhMucCon = db.DanhMucCons.First(x => x.Id == id);
+                db.DanhMucCons.DeleteOnSubmit(danhMucCon);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+
+                TempData["msg"] = "<script>alert('danh mục con này đã chứa sản phẩm, nếu muốn xóa thì vui lòng xóa sản phẩm');</script>";
+                return View();
+            }
+          
         }
 
         protected override void Dispose(bool disposing)

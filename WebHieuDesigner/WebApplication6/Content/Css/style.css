@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #FFFFFF;
-	font-family: 'Montserrat', sans-serif;
+	
 }.menu-header nav{
 	    padding-left: 0px !important; 
 	    padding-right: 0px !important;
@@ -16,6 +16,10 @@ body {
 	font-size: 20px;
 	line-height: 24px;
 	color: #000000;
+	margin-bottom: 0px;
+}
+.icons-header img {
+	margin: 0px 10px 0px 10px;
 }
 .right-content{
 
@@ -165,9 +169,10 @@ color: #FFFFFF;
 	color: #6FCF97 !important;
 	padding-left: 5px;
 }
-.content-footer-text span{
+.content-footer-text span {
 	color: #FFFFFF;
 	font-size: 16px;
+
 }
 .icon_footer{
 

@@ -4,7 +4,9 @@ USE HieuDesigner
 go
 create Table DanhMuc(
  Id int Primary key identity,
- Name NvarChar(500)
+ Name NvarChar(500),
+ Content nvarchar(500),
+  Img nvarchar(500),
 )
 create Table DanhMucCon(
  Id int Primary key identity,

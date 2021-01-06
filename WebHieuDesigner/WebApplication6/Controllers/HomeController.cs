@@ -147,12 +147,23 @@ namespace WebApplication6.Controllers
         {
             if (Id == "")
                 return null;
-
-            ViewBag.listItems = new SelectList(db.Items, "Id", "Tile");
+            List<Item> lstItem = new List<Item>();
+            Item defauQestion = new Item() {
+                Id = 999999,
+                Tile = "Ấn phẩm bạn muốn thiết kế?",
+            };
+            lstItem.Add(defauQestion);
+            lstItem.AddRange(db.Items);
+            lstItem.OrderByDescending(x => x.Id);
+            ViewBag.listItems = new SelectList(lstItem, "Id", "Tile");
             return PartialView();
         }
         public string ContactSend(string name, string email, string sdt, int IdItem)
         {
+            if (IdItem == 999999)
+            {
+                return null;
+            }
             try
             {
                 BaoGia bg = new BaoGia();

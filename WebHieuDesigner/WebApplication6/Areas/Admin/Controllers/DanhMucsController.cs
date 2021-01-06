@@ -45,8 +45,7 @@ namespace WebApplication6.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-    
-        public ActionResult Create([Bind(Include = "Id,Name,Content")] DanhMuc danhMuc, HttpPostedFileBase picture)
+        public string Create([Bind(Include = "Id,Name,Content")] DanhMuc danhMuc, HttpPostedFileBase picture)
         {
             string pictures = "";
 
@@ -57,8 +56,8 @@ namespace WebApplication6.Areas.Admin.Controllers
                 // lấy tên file
                 string fileName = picture.FileName;
                 // lưu file
-                picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
-                pictures += "/Content/FileUpload/" + fileName + ";";
+                picture.SaveAs(Server.MapPath(@"~/FileUpload/") + fileName);
+                pictures += "/FileUpload/" + fileName + ";";
             }
             //add nội dung
             danhMuc.Img = pictures;
@@ -66,10 +65,10 @@ namespace WebApplication6.Areas.Admin.Controllers
             {
                 db.DanhMucs.InsertOnSubmit(danhMuc);
                 db.SubmitChanges();
-                return RedirectToAction("Index");
+                return "error";
             }
 
-            return View(danhMuc);
+            return "success";
         }
 
         // GET: Admin/DanhMucs/Edit/5
@@ -105,8 +104,8 @@ namespace WebApplication6.Areas.Admin.Controllers
                     // lấy tên file
                     string fileName = picture.FileName;
                     // lưu file
-                    picture.SaveAs(Server.MapPath(@"~/Content/FileUpload/") + fileName);
-                    pictures += "/Content/FileUpload/" + fileName + ";";
+                    picture.SaveAs(Server.MapPath(@"~/FileUpload/") + fileName);
+                    pictures += "/FileUpload/" + fileName + ";";
 
                 }
 
@@ -152,10 +151,21 @@ namespace WebApplication6.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DanhMuc danhMuc = db.DanhMucs.First(x => x.Id == id);
-            db.DanhMucs.DeleteOnSubmit(danhMuc);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                DanhMuc danhMuc = db.DanhMucs.First(x => x.Id == id);
+                db.DanhMucs.DeleteOnSubmit(danhMuc);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+               catch (Exception)
+            {
+
+                TempData["msg"] = "<script>alert('danh mục này chứa danh mục con');</script>";
+                return View();
+            }
+        
+          
         }
 
         protected override void Dispose(bool disposing)

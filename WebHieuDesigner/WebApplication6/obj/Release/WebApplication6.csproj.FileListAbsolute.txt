@@ -41,6 +41,12 @@ C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\Sy
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.WebPages.dll
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.WebPages.Razor.dll
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\WebGrease.dll
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\Antlr3.Runtime.pdb
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.csprojAssemblyReference.cache
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.csproj.CoreCompileInputs.cache
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.csproj.CopyComplete
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.dll
+C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.pdb
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\EntityFramework.xml
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\EntityFramework.SqlServer.xml
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.Helpers.xml
@@ -51,10 +57,4 @@ C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\Sy
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.WebPages.Deployment.xml
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\System.Web.WebPages.Razor.xml
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\Newtonsoft.Json.xml
-C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\Antlr3.Runtime.pdb
 C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.csprojAssemblyReference.cache
-C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.csproj.CoreCompileInputs.cache
-C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.csproj.CopyComplete
-C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.dll
-C:\Users\MY PC\Desktop\hieuDesigner\Japan\WebHieuDesigner\WebApplication6\obj\Release\WebApplication6.pdb
