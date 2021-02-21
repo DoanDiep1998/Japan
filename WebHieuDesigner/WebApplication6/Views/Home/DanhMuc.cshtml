@@ -80,7 +80,7 @@
                             }
 
                             <div class="title-item">
-                                <a href="@Url.Action("ChiTiet",new {Id=@item.Id })">
+                                <a href="@Url.Action("ChiTiet",new {Id=ite.Id })">
                                     <b>@ite.Tile </b><br>
                                     <span>@(String.Format("{0:dd/MM/yyyy}", ite.CreateDate ?? DateTime.Now))</span>
                                 </a>

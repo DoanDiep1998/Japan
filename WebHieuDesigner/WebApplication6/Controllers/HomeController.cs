@@ -39,7 +39,7 @@ namespace WebApplication6.Controllers
                     sub.Name = itemSub.Name;
 
                     List<Items> lstItems = new List<Items>();
-                    var lstItemsByID = listItems.Where(x => x.ID_DanhMucCon == itemSub.Id).OrderByDescending(x=>x.CreateDate).Take(4).ToList();
+                    var lstItemsByID = listItems.Where(x => x.ID_DanhMucCon == itemSub.Id).OrderByDescending(x=>x.CreateDate).Take(8).ToList();
                     foreach (var ite in lstItemsByID)
                     {
                         Items it = new Items();
